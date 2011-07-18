@@ -1,6 +1,24 @@
 = devise_sha1eccube_encryptable
 
-Description goes here.
+Adds Sha1 with Eccube  encryption support for Devise
+
+= Synopsis
+
+== Installation
+1. Add <tt>devise_sha1eccube_encryptable</tt> to your Gemfile
+2. <tt>bundle install</tt>
+
+== Configuration 
+1. In <tt>config/initializers/devise.rb</tt>
+    # Enable the Sha1eccube encryptor
+    config.encryptor = :sha1eccube
+    # Uncomment the generated pepper
+    # copy form your eccube AUTH_MAGIC value
+    config.pepper = "ae2352..."
+2. Enable <tt>:encryptable</tt> on your model
+
+== Decryption
+  ::Sha1eccube.decrypt(encrypted_password, Devise.pepper)
 
 == Contributing to devise_sha1eccube_encryptable
  

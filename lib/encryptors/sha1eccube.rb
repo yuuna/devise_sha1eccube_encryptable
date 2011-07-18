@@ -2,15 +2,13 @@ require 'digest/sha1'
 
 module Devise
   module Encryptors
-    # = AES
-    # Uses the AES algorithm to encrypt passwords.
+    # = Sha1eccube
+    # Sha1 with eccube format encrypter
     class Sha1eccube < Base
       class << self
-        # Returns a Base64 encrypted password where pepper is used for the key,
-        # and the initialization_vector is randomly generated and prepended onto
-        # encoded ciphertext
+        #returns eccube encrypt with pepper
         def digest(password, stretches, salt, pepper)
-          Digest::SHA1.hexdigest(password.":".pepper)
+          Digest::SHA1.hexdigest(password+":"+pepper)
         end
         alias :encrypt :digest
       end
